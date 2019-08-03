@@ -3,6 +3,7 @@ import pickle
 import sys
 import bitarray
 
+from utils import to_string, to_int, get_params
 
 def main():
     HOST = sys.argv[1]
@@ -18,7 +19,15 @@ def main():
                 if not data:
                     break
                 unpickeled = pickle.loads(data)
-                print(unpickeled)
+
+                # m: is the part of result_msg that its in fact a message
+                # c1: is the part of result_msg that is the first mod
+                # c2: is the part of result_msg that is the second mod
+                m, c1, c2 = get_params(unpickeled)
+
+                print("C1: ", to_int(c1))  # only for debugging
+                print("C2: ", to_int(c2))  # only for debugging
+                print("MENSAJE: ", to_string(m))  # prints message
 
 
 if __name__ == "__main__":
