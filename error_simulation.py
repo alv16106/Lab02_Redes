@@ -3,7 +3,7 @@ import random
 
 from error_identifier import fletcher_checksum
 
-ERROR_RATE = 0
+ERROR_RATE = 0.01
 
 
 def to_bitarray(bitarray_msg, with_error=True):
