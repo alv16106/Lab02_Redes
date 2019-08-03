@@ -27,13 +27,17 @@ def main():
                 # c2: is the part of result_msg that is the second mod
                 m, c1, c2 = get_params(unpickeled)
 
+                # c1_n: is the new c1, calculated for the message we recieve
+                # c2_n: is the new c2, calculated for the message we recieve
                 c1_n, c2_n = fletcher_checksum(m)
-
-                if (to_int(c1_n) != to_int(c1) and to_int(c2_n) != to_int(c2)):
-                    print("ERROR, mensaje posiblemente corrupto")
 
                 print("C1: ", to_int(c1), to_int(c1_n))  # only for debugging
                 print("C2: ", to_int(c2), to_int(c2_n))  # only for debugging
+                
+                # If they dont concide there is a corruption somewhere
+                if (to_int(c1_n) != to_int(c1) and to_int(c2_n) != to_int(c2)):
+                    print("ERROR, mensaje posiblemente corrupto")
+
                 print("MENSAJE: ", to_string(m))  # prints message
 
 
