@@ -1,17 +1,22 @@
 import socket
 import bitarray
 import pickle
-from error_simulation import message
+import sys
+from error_simulation import message, hamming_message
 from utils import to_string, to_int, get_params
 
 
 def main():
+    algorithm = sys.argv[1]
 
     msg = input("Mensaje: ")
     # result_msg: the message with noise and with the 16bits of fletcher mods
     # original_msg: is the message with noise only (only for debugging)
     # real_msg: is the message without noise (only for debuggin)
-    result_msg, original_msg, real_msg = message(msg)
+    if (algorithm == 'hamming'):
+        result_msg, original_msg, real_msg = hamming_message(msg)
+    else:
+        result_msg, original_msg, real_msg = message(msg)
 
     info = result_msg
     pickeld = pickle.dumps(info)
