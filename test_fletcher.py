@@ -37,7 +37,7 @@ if __name__ == "__main__":
             False if (to_int(c1_n) != to_int(c1) and to_int(c2_n) != to_int(c2)) else True,
             correct
         ])
-    
+
     with open('fletcher.csv', 'w') as writeFile:
         writer = csv.writer(writeFile)
         writer.writerows(rows)
